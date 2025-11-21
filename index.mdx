@@ -1,65 +1,10 @@
 ---
-title: Blog
-description: Latest posts and updates
+title: "Blog"
+description: "Latest posts and updates"
 ---
 
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import Link from "@mintlify/components/link";
-
-const postsDir = "./blog/posts";
-
-// Read all MDX files
-const files = fs.readdirSync(postsDir);
-
-// Extract metadata
-const posts = files
-  .filter(file => file.endsWith(".mdx"))
-  .map(file => {
-    const filePath = path.join(postsDir, file);
-    const content = fs.readFileSync(filePath, "utf-8");
-    const { data } = matter(content);
-
-    return {
-      slug: file.replace(".mdx", ""),
-      ...data
-    };
-  })
-  .sort((a, b) => new Date(b.date) - new Date(a.date)); // newest first
----
-
-# 📝 Latest Blog Posts
 
 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-{posts.map(post => (
-  <article
-    key={post.slug}
-    className="border rounded-xl p-6 bg-white dark:bg-gray-900 shadow-sm"
-  >
-    {post.cover && (
-      <img
-        src={post.cover}
-        className="rounded-lg mb-4"
-        alt={post.title}
-      />
-    )}
-
-    <h2 className="text-xl font-semibold mb-2">
-      <Link href={`/blog/posts/${post.slug}`}>
-        {post.title}
-      </Link>
-    </h2>
-
-    <p className="text-gray-600 dark:text-gray-300 mb-2">
-      {post.description}
-    </p>
-
-    <span className="text-sm text-gray-500">
-      {new Date(post.date).toLocaleDateString()}
-    </span>
-  </article>
-))}
+{/* Posts would be rendered here */}
 
 </div>
