@@ -68,6 +68,12 @@
         ]
       }
     ],
+    "collections": {
+  "blog": {
+    "output": true,
+    "source": "blog/posts"
+  }
+},
     "global": {
       "anchors": [
         {
